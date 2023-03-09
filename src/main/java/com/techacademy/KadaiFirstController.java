@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class KadaiFirstController {
 
-    @GetMapping("dayofweek/20230308")
-    public String dispDayOfWeek() {
+    @GetMapping("dayofweek/{yyyy}/{mm}/{dd}")
+    public String dispDayOfWeek(@PathVariable int yyyy,@PathVariable int mm,@PathVariable int dd) {
 
-        LocalDate date = LocalDate.of(2023,3,8);
+        LocalDate date = LocalDate.of(yyyy,mm,dd);
 
         DayOfWeek w = date.getDayOfWeek();
 
