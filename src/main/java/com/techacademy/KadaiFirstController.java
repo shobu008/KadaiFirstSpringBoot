@@ -2,6 +2,8 @@ package com.techacademy;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,10 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class KadaiFirstController {
 
-    @GetMapping("dayofweek/{yyyy}/{mm}/{dd}")
-    public String dispDayOfWeek(@PathVariable int yyyy,@PathVariable int mm,@PathVariable int dd) {
+    @GetMapping("dayofweek/{yyyymmdd}")
+    public String dispDayOfWeek(@PathVariable String yyyymmdd) {
 
-        LocalDate date = LocalDate.of(yyyy,mm,dd);
+        String str = yyyymmdd;
+
+        String str1 = str.substring(0, 4);
+        String strr = str.substring(4);
+        String str2 = strr.substring(0, 2);
+        String str3 = strr.substring(2);
+
+        int yyyy = Integer.parseInt(str1);
+        int mm = Integer.parseInt(str2);
+        int dd = Integer.parseInt(str3);
+
+        LocalDate date = LocalDate.of(yyyy, mm, dd);
 
         DayOfWeek w = date.getDayOfWeek();
 
